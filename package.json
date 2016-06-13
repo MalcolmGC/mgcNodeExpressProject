@@ -1,0 +1,14 @@
+{
+  "name": "mgcnode_express_project",
+  "version": "1.0.0",
+  "description": "Wai-Yin Lessons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MalcolmGC",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
