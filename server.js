@@ -11,13 +11,24 @@ app.get('/', function(req, res) {
   res.render('home', { title: "Malcolm's Site" });
   // res.send("Howdy y'all");
 });
-app.get('/', function (request, response) {
+app.get('/', function (req, res) {
   var favoriteLetters = ['a', 'b', 'c']; // TODO: Make my favorites here.
-  response.render('home', {
+//   res.render('home', {
+//     title: "Malcolm's Site",
+//     favorites: favoriteLetters
+//   });
+// });
+  var favoriteLinks = [
+    { text: 'Apple', url: 'http://apple.com' },
+    { text: 'Facebook', url: 'http://facebook.com' }
+  ];
+  res.render('home', {
     title: "Malcolm's Site",
-    favorites: favoriteLetters
+    favorites: favoriteLetters,
+    links: favoriteLinks
   });
 });
+
 var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 // =======================

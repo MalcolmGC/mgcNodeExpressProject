@@ -9,3 +9,8 @@
     <li>{{favorite}}</li>
   {{/each}}
 </ul>
+<ul>
+{{#each links as |link| }}
+  <li>{{link.url}} {{link.text}}</li>
+{{/each}}
+<ul>
