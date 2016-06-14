@@ -11,6 +11,13 @@ app.get('/', function(req, res) {
   res.render('home', { title: "Malcolm's Site" });
   // res.send("Howdy y'all");
 });
+app.get('/', function (request, response) {
+  var favoriteLetters = ['a', 'b', 'c']; // TODO: Make my favorites here.
+  response.render('home', {
+    title: "Malcolm's Site",
+    favorites: favoriteLetters
+  });
+});
 var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 // =======================
