@@ -1,15 +1,15 @@
 //Step 2. Create a server.js file and add the base route:
 var express = require('express'),
   app = express(),
-  axios = require('axios'),
+  // axios = require('axios'),
   port = process.env.PORT || 3000;
-require('dotenv').config();
-var options = {
-  headers: {
-    'User-Agent': 'MalcolmGC',
-    Authorization: 'token ' + process.env.GITHUB_TOKEN
-  }
-};
+// require('dotenv').config();
+// var options = {
+//   headers: {
+//     'User-Agent': 'MalcolmGC',
+//     Authorization: 'token ' + process.env.GITHUB_TOKEN
+//   }
+// };
 // Server:
 app.listen(port, function() {
   console.log("Server running on port", port);
@@ -26,6 +26,7 @@ app.get('/', function (req, res) {
 //     favorites: favoriteLetters
 //   });
 // });
+
   var favoriteLinks = [
     { text: 'Apple', url: 'http://apple.com' },
     { text: 'Facebook', url: 'http://facebook.com' }
@@ -38,12 +39,13 @@ app.get('/', function (req, res) {
 });
 
 app.get('/projects', function (req, res) {
-  var options = {
-    headers: {
-    'User-Agent': 'MalcolmGC'
-    }
-  };
-  axios.get('https://api.github.com/users/MalcolmGC', options)
+  // var options = {
+  //   headers: {
+  //   'User-Agent': 'MalcolmGC'
+  //   }
+  // };
+  // axios.get('https://api.github.com/users/MalcolmGC', options)
+  githubService.getBio()
     .then(function (results) {
     console.log(results.data.bio); // Then, render in template.
     // res.render('projects', {title: "Malcolm's Projects", bio: results.data.bio});
@@ -53,6 +55,7 @@ app.get('/projects', function (req, res) {
 });
 
 var exphbs = require('express-handlebars');
+var githubService = require('./services/githubService.js');
 var port = process.env.PORT || 3000;
 // =======================
 // middleware & config
