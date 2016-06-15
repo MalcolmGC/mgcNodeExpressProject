@@ -3,6 +3,13 @@ var express = require('express'),
   app = express(),
   axios = require('axios'),
   port = process.env.PORT || 3000;
+require('dotenv').config();
+var options = {
+  headers: {
+    'User-Agent': 'MalcolmGC',
+    Authorization: 'token ' + process.env.GITHUB_TOKEN
+  }
+};
 // Server:
 app.listen(port, function() {
   console.log("Server running on port", port);
@@ -38,9 +45,9 @@ app.get('/projects', function (req, res) {
   };
   axios.get('https://api.github.com/users/MalcolmGC', options)
     .then(function (results) {
-    // console.log(results.data.bio); // Then, render in template.
+    console.log(results.data.bio); // Then, render in template.
     // res.render('projects', {title: "Malcolm's Projects", bio: results.data.bio});
-    console.log(results.data); // Then, render in template.
+    // console.log(results.data); // Then, render in template.
     res.render('projects', {title: "Malcolm's Projects", bio: results.data});
   });
 });
