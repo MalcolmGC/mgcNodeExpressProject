@@ -1,16 +1,17 @@
 //Step 2. Create a server.js file and add the base route:
 var express = require('express'),
   app = express(),
+  axios = require('axios'),
   port = process.env.PORT || 3000;
 // Server:
 app.listen(port, function() {
   console.log("Server running on port", port);
 });
 // Routes:
-app.get('/', function(req, res) {
-  res.render('home', { title: "Malcolm's Site" });
-  // res.send("Howdy y'all");
-});
+// app.get('/', function(req, res) {
+//   res.render('home', { title: "Malcolm's Site" });
+//   // res.send("Howdy y'all");
+// });
 app.get('/', function (req, res) {
   var favoriteLetters = ['a', 'b', 'c']; // TODO: Make my favorites here.
 //   res.render('home', {
