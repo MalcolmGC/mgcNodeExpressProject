@@ -38,25 +38,38 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/projects', function (req, res) {
-  var out = [];
-  githubService.getBio()
-    .then(function (results) {
-    console.log(results.data.bio);
-    out.push(results.data.bio);
-  })
-    .then(getRepos);
+// app.get('/projects', function (req, res) {
+//   var out = [];
+//   githubService.getBio()
+//     .then(function (results) {
+//     console.log(results.data.bio);
+//     out.push(results.data.bio);
+//   })
+//     .then(getRepos);
 
-var getRepos = githubService.getRepos()
-    .then(function (results) {
-    results.data.map(function(elem, index) {
-      out.push(index + '. id: ' + elem.id + '  full_name: ' + elem.full_name);
-    });
-    console.log(out);
-    res.render('projects', {title: "Malcolm's Projects", repo: out});  
+// var getRepos = githubService.getRepos()
+//     .then(function (results) {
+//     results.data.map(function(elem, index) {
+//       out.push(index + '. id: ' + elem.id + '  full_name: ' + elem.full_name);
+//     });
+//     console.log(out);
+//     res.render('projects', {title: "Malcolm's Projects", repo: out});  
+//   });
+// });
+app.get('/projects', function (req, res) {
+  githubService.githubInfo()
+  .then(function (results) {
+    res.render('projects',
+      { title: "Malcolm's Projects",
+        bio: results.bio,
+        repos: results.repos
+      }
+    );
+  })
+  .catch(function (err) {
+    console.log('err: ', err);
   });
 });
-
 var exphbs = require('express-handlebars');
 var githubService = require('./services/githubService.js');
 var port = process.env.PORT || 3000;

@@ -15,10 +15,29 @@ var githubService = function () {
   function getRepos() { // Added
     return axios.get('https://api.github.com/users/MalcolmGC/repos', options);
   }
+
+  function githubInfo() {
+    return axios.all([getRepos(), getBio()]) // array of promises.
+      .then(function (results) { // array of data.
+        var repos = results[0].data;
+        var bio = results[1].data;
+        return { repos: repos, bio: bio }; // object with repos and bio data.
+      }
+    );
+  }
+
   return {
     getBio: getBio,
-    getRepos: getRepos // Added
+    getRepos: getRepos,
+    githubInfo: githubInfo // Added
   };
+
+
+
+
+
+
+
 };
 
 module.exports = githubService();
