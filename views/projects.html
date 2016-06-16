@@ -17,24 +17,20 @@
       {{#each repos as |repo|}}
       <li class="list-group-item">
         <div class="repo-list-stats">
-          <span class="repo-list-stat-item">
-            {{repo.language}}
-          </span> 
-          <span class="repo-list-stat-item"><i class="fa fa-star"></i>
-            0
+          <span class=“repo-list-stat-item">{{repo.language}}</span> 
+              <span class="repo-list-stat-item"><i class="fa fa-star"></i>0
           </span>
-          <span class="repo-list-stat-item"><i class="fa fa-code-fork"></i>
-            1
+          <span class="repo-list-stat-item"><i class="fa fa-code-fork"></i>1
           </span>
         </div>
         <h4>
-          {{repo.name}}
+          Repo name
         </h4>
         <p>
-           {{repo.description}}
+          Repo description
         </p>
         <p class="repo-list-meta">
-           {{repo.updated_at}}
+          Updated on June 16, 2016
         </p>
       </li>
       {{/each}}
