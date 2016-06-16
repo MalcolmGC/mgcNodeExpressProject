@@ -39,22 +39,36 @@ app.get('/', function (req, res) {
 });
 
 app.get('/projects', function (req, res) {
-  var out = [];
-  githubService.getBio()
+  // var options = {
+  //   headers: {
+  //   'User-Agent': 'MalcolmGC'
+  //   }
+  // };
+  // axios.get('https://api.github.com/users/MalcolmGC', options)
+  // githubService.getBio()
+  //   .then(function (results) {
+  //   console.log(results.data.bio); // Then, render in template.
+  //   // res.render('projects', {title: "Malcolm's Projects", bio: results.data.bio});
+  //   // console.log(results.data); // Then, render in template.
+  //   res.render('projects', {title: "Malcolm's Projects", bio: results.data});
+  // });
+  githubService.getRepos()
     .then(function (results) {
-    console.log(results.data.bio);
-    out.push(results.data.bio);
-  })
-    .then(getRepos);
-
-var getRepos = githubService.getRepos()
-    .then(function (results) {
+      // console.log(results[0]); // undefined
+      // console.log(results.data[0]); // First repo.
+      // console.log(results.data[0].full_name); // MalcolmGC/2015_0504_Sandbox
+      // console.log(results.data[1].full_name); // MalcolmGC/2015_0504_Sandbox
+    var out = [];
     results.data.map(function(elem, index) {
+      console.log(index);
       out.push(index + '. id: ' + elem.id + '  full_name: ' + elem.full_name);
+      // res.render('projects', {title: "Malcolm's Projects", repo: out});
     });
     console.log(out);
-    res.render('projects', {title: "Malcolm's Projects", repo: out});  
-  });
+    res.render('projects', {title: "Malcolm's Projects", repo: out});
+    // console.log(results.data); // Then, render in template.
+    // res.render('projects', {title: "Malcolm's Projects", repo: out[0]});
+  });  
 });
 
 var exphbs = require('express-handlebars');

@@ -12,6 +12,13 @@ var githubService = function () {
     // return axios.get('https://api.github.com/users/wykhuh', options);
     return axios.get('https://api.github.com/users/MalcolmGC', options);
   }
-  return { getBio: getBio };
+  function getRepos() { // Added
+    return axios.get('https://api.github.com/users/MalcolmGC/repos', options);
+  }
+  return {
+    getBio: getBio,
+    getRepos: getRepos // Added
+  };
 };
+
 module.exports = githubService();
