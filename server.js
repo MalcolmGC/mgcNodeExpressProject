@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
     links: favoriteLinks
   });
 });
-
+// /projects
 app.get('/projects', function (req, res) {
   githubService.githubInfo()
   .then(function (results) {
