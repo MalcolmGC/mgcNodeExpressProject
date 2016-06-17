@@ -20,19 +20,30 @@ app.get('/', function (req, res) {
   });
 });
 // /projects
-app.get('/projects', function (req, res) {
-  githubService.githubInfo()
-  .then(function (results) {
-    res.render('projects',
-      { title: "Malcolm's Projects",
-        bio: results.bio,
-        repos: results.repos
-      }
-    );
-  })
-  .catch(function (err) {
-    console.log('err: ', err);
-  });
+// app.get('/projects', function (req, res) {
+//   githubService.githubInfo()
+//   .then(function (results) {
+//     res.render('projects',
+//       { title: "Malcolm's Projects",
+//         bio: results.bio,
+//         repos: results.repos
+//       }
+//     );
+//   })
+//   .catch(function (err) {
+//     console.log('err: ', err);
+//   });
+// });
+// /projects Step 15:
+app.get('/projects/:id?', function (req, res) {
+  var currentProjectName = req.params.id; // id from the url.
+  console.log('currentProjectName:', currentProjectName);
+  res.render('projects', // view = file path of the view to render.
+    { // [, locals] [, callback])
+      title: "Malcolm's Projects: " + currentProjectName,
+      project: { name: currentProjectName } // pass to template.
+    }
+  );
 });
 var exphbs = require('express-handlebars');
 var githubService = require('./services/githubService.js');
