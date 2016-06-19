@@ -48,12 +48,12 @@ app.get('/projects', function (req, res) {
   console.log("server: In '/projects' ..."); // OK.
   githubService.githubInfo()
   .then(function (results) {
-    var repos = results.repos;
+    var repos = results.repos; // 17 ...
     console.log('server: repos:'); // Not shwowing.
     console.log(repos);
-    repos.forEach(function (repo, index) {
+    repos.forEach(function (repo, index) { // Adds property to repos:
       repos[index].hasPost = projectInfoService.fileExists(repo.name);
-    });
+    }); // End 17.
     console.log('server: results:'. results);
     console.log('server: results.bio:'. results.bio);
     res.render('projects',

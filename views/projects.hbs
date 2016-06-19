@@ -29,7 +29,7 @@
         <p>
           {{repo.description}}
         </p>
-
+        {{!-- Added in 17. Only show More Info link if repo has a post. --}}
         {{#if repo.hasPost}}
           <p>
             <a href="/projects/{{repo.name}}">More Info </a>

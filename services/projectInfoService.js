@@ -4,7 +4,7 @@ var fs = require('fs'),
 var projectInfoService = function () {
   function readFile(repoName, callback) {
     var filePath = path.join(__dirname, '../data', repoName + '.html');
-    console.log('Reading filePath: ', filePath);
+    //console.log('Reading filePath: ', filePath);
     return fs.readFile(filePath, function (error, data) {
         callback(error, data);
     });
@@ -12,7 +12,7 @@ var projectInfoService = function () {
   function fileExists(repoName) { // Step 17 ...
     var filePath = path.join(__dirname, '../data', repoName + '.html');
     try {
-      return fs.statSync(filePath).isFile();
+      return fs.statSync(filePath).isFile(); // expect true.
     } catch (err) {
       return false;
     }
@@ -22,5 +22,6 @@ var projectInfoService = function () {
      fileExists: fileExists // Step 17.
   };
 };
+
 module.exports = projectInfoService();
 // access: readFile(repoName, callback(err, data));
