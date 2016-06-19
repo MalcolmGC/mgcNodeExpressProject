@@ -4,6 +4,7 @@ var express = require('express'),
   exphbs = require('express-handlebars'),
   githubService = require('./services/githubService.js'),
   projectInfoService = require('./services/projectInfoService.js'), // New.
+  moment = require('moment'), // 18.
   port = process.env.PORT || 3000;
 // =======================
 // middleware & config
@@ -16,9 +17,9 @@ app.engine('hbs', exphbs({
   helpers: { // Added in Step 9.
     json: function (context) {
       return JSON.stringify(context);
-    //},
-    //formatDate: function (date, format) {
-    //  return moment(date).format(format);
+    },
+    formatDate: function (date, format) { // Added 18.
+      return moment(date).format(format);
     }
   }
 }));

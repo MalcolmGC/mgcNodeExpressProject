@@ -40,6 +40,9 @@
           {{repo.updated_at}}
         </p>
       </li>
+      <li class=“list-group-item">
+        {{formatDate bio.created_at 'MMMM D, YYYY’}} {{!-- 18. --}}
+      </li>
       {{/each}}
     </ul>
   </div>
