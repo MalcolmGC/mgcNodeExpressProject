@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=production&&node server.js",
-    "dev": "set NODE_ENV=development&&nodemon server.js"
+    "dev": "set NODE_ENV=development&&nodemon server.js",
+    "lint": "node_modules/.bin/eslint ."
   },
   "author": "MalcolmGC",
   "license": "ISC",
@@ -20,5 +21,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MalcolmGC/mgcNodeExpressProject.git"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.0.1"
   }
 }
